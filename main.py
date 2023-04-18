@@ -1,16 +1,14 @@
-# This is a sample Python script.
+import pymysql
+import sys
+from getpass import getpass
 
-# Press ⇧F10 to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+try:
+    conn = pymysql.connect(
+        host='localhost',
+        port=3306,
+        user=input('Enter database username: '),
+        password=getpass('Enter password: '),
+        database='nutrition_db')
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+except pymysql.err.OperationalError as e:
+    print('Error: %d: %s' % (e.args[0], e.args[1]))
