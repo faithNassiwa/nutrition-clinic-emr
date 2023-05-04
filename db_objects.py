@@ -115,6 +115,7 @@ def register_diagnosis(connection):
         print('Error: %d: %s' % (e.args[0], e.args[1]))
     return None
 
+
 def add_patient_consultation(connection):
     try:
         nutritionist_email_address = input("Enter Nutritionist's Email Address: ")
